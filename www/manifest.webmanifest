@@ -1,0 +1,12 @@
+{
+  "name": "PWA Launch",
+  "short_name": "Launch",
+  "start_url": "./",
+  "id": "./",
+  "theme_color": "#000",
+  "background_color": "#000",
+  "display": "standalone",
+  "launch_handler": {
+    "client_mode": "focus-existing"
+  }
+}

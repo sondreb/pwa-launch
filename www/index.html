@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="manifest" href="./manifest.webmanifest" />
+    <title>PWA Launch</title>
+  </head>
+  <body>
+    <h1><a href="/">PWA Launch</a><br /></h1>
+    <div>Origin: <span></span></div>
+    <div hidden class="not-supported">
+      Your browser does not support the Launch Handler API.
+    </div>
+    <script>
+      document.querySelector("span").textContent = location.origin;
+
+      if (
+        "launchQueue" in window &&
+        "targetURL" in window.LaunchParams.prototype
+      ) {
+        window.launchQueue.setConsumer((launchParams) => {
+          if (launchParams.targetURL) {
+            const params = new URL(launchParams.targetURL).searchParams;
+            console.log("PARAMS:", params);
+          }
+        });
+      } else {
+        document.querySelector(".not-supported").hidden = false;
+      }
+    </script>
+  </body>
+</html>
